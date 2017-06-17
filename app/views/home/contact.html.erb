@@ -1,0 +1,53 @@
+<h1>お問い合わせ</h1>
+
+<p><%= @msg %></p>
+
+<!-- <select class='alphabet'>
+    <option value='ABC'>ベースサポートの依頼</option>
+    <option value='DEF'>サイトについて</option>
+    <option value='GHI'>個人について</option>
+    <option value='JKL'>その他</option>
+</select><br>
+
+お問い合わせ内容
+
+<textarea id='TextArea' cols="40">
+
+</textarea><br>
+お名前　<textarea id='TextArea' cols="40"></textarea><br>
+メールアドレス　<textarea id='TextArea' cols="40"></textarea><br>
+
+<input type="submit"></input> -->
+
+<table>
+   <%= form_for(@contact, url:{controller:'home', action:'create'}) do |form| %>
+    <tr><th>Name</th>
+      <td><%= form.text_field :name %></td></tr>
+      <tr><th>Age</th>
+        <td><%= form.text_field :age %></td></tr>
+      <tr><th>お問い合わせ内容</th>
+        <td><%= form.text_field :mail %></td></tr>
+      </tr>
+      <tr><th></th>
+        <td><%= form.submit :"送信" %></td></tr>
+      </tr>
+    </form>
+    <% end %>
+  </table>
+
+
+  <% @contact.errors.full_messages.each do |contact| %>
+    <%= contact %>
+  <% end %>
+
+
+
+
+
+<script>
+  $('.alphabet').change(function() {
+    var txt = $('.alphabet option:selected').text();
+    console.log(txt);
+    document.getElementById("TextArea").value = txt;
+});
+</script>

@@ -1,0 +1,53 @@
+<header>
+   <div class="container">
+     <div class="header-left">
+
+     </div>
+     <div class="header-right">
+       <div class="login" id="login-show">ログイン</div>
+     </div>
+   </div>
+ </header>
+
+
+
+
+
+
+
+<div class="modal">
+      <div id="login-form">
+        <h2>Emailログイン</h2>
+        <form action="#">
+          <input class="form-control" type="text" placeholder="メールアドレス">
+          <input class="form-control" type="password" placeholder="パスワード">
+          <div id="submit-btn">ログイン</div>
+        </form>
+      </div>
+    </div>
+
+    <%= link_to("TOP", "/home/top") %>
+
+
+
+
+
+<script>
+    $(function() {
+      $('#login-show').click(function(){
+        $('.modal').fadeIn();
+      });
+
+      $('.signup-show').click(function(){
+        $('#signup-modal').fadeIn();
+      });
+
+
+      $('.close-modal').click(function(){
+        $('#login-modal').fadeOut();
+        $('#signup-modal').fadeOut();
+      });
+
+
+    });
+    </script>

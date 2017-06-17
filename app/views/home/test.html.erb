@@ -1,0 +1,92 @@
+<form name="selbox">
+<p>好きなプロ野球リーグは？</p>
+<select name="league" onchange="teamSet()">
+<option value="">*リーグ選択</option>
+<option value="">セ・リーグ</option>
+<option value="">パ・リーグ</option>
+</select>
+
+<p>好きなチームは？</p>
+<select name="team">
+<option value="">*チーム選択</option>
+<option value=""></option>
+<option value=""></option>
+<option value=""></option>
+<option value=""></option>
+<option value=""></option>
+<option value=""></option>
+</select>
+</form>
+
+<%= link_to("TOP", "/home/top") %>
+
+<div class="main posts-index">
+  <div class="container">
+<% @app.each do |app| %>
+       <%= app %>
+     </div>
+ <% end %>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<div class="btn" id="hide-text"> 説明を隠す </div>
+  <div class="btn" id="show-text">説明を表示する</div>
+
+  <div class="btn" id="top-btn">一番上に戻る</div>
+  <p id="plzhide">Get the fxxk up!</p>
+    <p class="oh">Get the fxxk up!</p>
+    <p class="answer">who the fuck do you think?</P>
+    <p class="answer open">you are just a sucks.</P>
+
+
+
+
+
+
+<script>
+
+//セ・リーグのチームの配列
+var s_league=new Array(
+"","中日","ヤクルト","巨人","阪神","横浜","広島"
+);
+
+//パ・リーグのチームの配列
+var p_league=new Array(
+"","ロッテ","西武","オリックス","ソフトバンク","楽天","日本ハム"
+);
+
+
+function teamSet(){
+
+  //オプションタグを連続して書き換える
+  for ( i=1; i<7; i++ ){
+
+    //選択したリーグによって分岐
+    switch (document.selbox.league.selectedIndex){
+      case 0: document.selbox.team.options[i].text="";break;
+      case 1: document.selbox.team.options[i].text=s_league[i];break;
+      case 2: document.selbox.team.options[i].text=p_league[i];break;
+    }
+  }
+
+  //チーム名のセレクトボックスの選択番号を０にする
+  document.selbox.team.selectedIndex=0;
+}
+
+
+$('.oh').fadeOut(3000);
+// セクレタにクラスを使用する時は最初に.をつける
+
+
+
+$('#show-text').click(function(){
+  $('#plzhide').css('color','black').show();
+});
+
+
+$('#hide-text').click(function(){
+  $('#plzhide').css('color','blue').hide(1000);
+  // メソッドチェーンの学習
+});
+</script>
